@@ -111,7 +111,6 @@ while True:
             resposta = '  ', '___  ' * index
             print(resposta)
             entrada = input('Digite uma letra: ')            
-        print(escolha_1[index])
         if entrada not in (escolha_1[index]):
             if menu_2 == '3':
                 errors += 3        
@@ -121,7 +120,6 @@ while True:
                 # essa parte da dificuldade 2
             else:
                 errors += 1        
-        print(errors)
             
     
     # if entrada in (escolha_1[index]):
