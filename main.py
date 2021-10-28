@@ -1,6 +1,7 @@
 import random
 import time
 import os
+import math
 # Desenha o boneco a cada erro
 # @params error
 def drawDoll (error):
@@ -67,7 +68,7 @@ def drawDoll (error):
         print(" |      \|/   ")
         print(" |       |    ")
         print(" |      /     ")
-    if error == 9:
+    if error >= 9:
         print("  _______     ")
         print(" |/      |    ")
         print(" |      (_)   ")
@@ -105,16 +106,21 @@ while True:
     
     errors = 0    
     while errors <= 9:
+        drawDoll(errors)
         if errors < 9:
             resposta = '  ', '___  ' * index
             print(resposta)
             entrada = input('Digite uma letra: ')            
         print(escolha_1[index])
         if entrada not in (escolha_1[index]):
-            errors += 1
-        if menu_2 == '3':
-            errors = errors + 3
-        drawDoll(errors)
+            if menu_2 == '3':
+                errors += 3        
+            elif menu_2 == '2':
+                errors += 2     
+                # pensando ainda em uma forma de implementar 
+                # essa parte da dificuldade 2
+            else:
+                errors += 1        
         print(errors)
             
     
