@@ -2,6 +2,12 @@ import random
 import time
 import os
 import math
+
+sentimentos = ['alegria', 'amor', 'cidadania', 'esperança','felicidade', 'harmonia',  'paz', 'perseverança', 'saudades','solidariedade',  'tristeza', 'odio', 'raiva']
+frutas = ['abacate', 'abacaxi', 'acerola', 'banana', 'caju''igo','framboesa', 'goiaba', 'kiwi', 'laranja', 'limão', 'maçã', 'mamão', 'melão', 'pêssego', 'tangerina', 'manga']
+times = ['atlético', 'botafogo', 'corinthians', 'coritiba', 'cruzeiro', 'flamengo','fluminense', 'goiás','grêmio','internacional', 'náutico', 'palmeiras',  'santos',  'vasco', 'avaí', 'figueirense']
+
+
 # Desenha o boneco a cada erro
 # @params error
 def drawDoll (error):
@@ -80,17 +86,18 @@ def drawDoll (error):
         clear = lambda: os.system('clear')
         clear()
 
-while True:
-    sentimentos = ['alegria', 'amor', 'cidadania', 'esperança','felicidade', 'harmonia',  'paz', 'perseverança', 'saudades','solidariedade',  'tristeza', 'odio', 'raiva']
-
-    frutas = ['abacate', 'abacaxi', 'acerola', 'banana', 'caju''igo','framboesa', 'goiaba', 'kiwi', 'laranja', 'limão', 'maçã', 'mamão', 'melão', 'pêssego', 'tangerina', 'manga']
-
-    times = ['atlético', 'botafogo', 'corinthians', 'coritiba', 'cruzeiro', 'flamengo','fluminense', 'goiás','grêmio','internacional', 'náutico', 'palmeiras',  'santos',  'vasco', 'avaí', 'figueirense']
-
-    menu_1 = input('TIPO DE JOGO \n\n[1]SENTIMENTOS\n[2]FRUTAS\n[3]TIMES\n\nDigite o número do tipo escolhido: ')
-
-    while menu_1 not in ('1','2','3'):
-        menu_1 = input('TIPO DE JOGO \n\n[1]SENTIMENTOS\n[2]FRUTAS\n[3]TIMES\n\nDigite o número do tipo escolhido: ')
+while True:       
+    while True:
+        print('TIPO DE JOGO\n')
+        print('[1]SENTIMENTOS')
+        print('[2]FRUTAS')
+        print('[3]TIMES')
+    
+        menu_1 = input('Digite o número do tipo escolhido: ')
+        if menu_1 not in('1','2','3'):
+            print('Digite apenas um número de 1 a 3.\n')
+        else:
+            break
 
     if menu_1 == '1':
         escolha_1 = sentimentos[:]
@@ -98,19 +105,26 @@ while True:
         escolha_1 = frutas[:]
     elif menu_1 == '3':
         escolha_1 = times[:]
-
     index = random.randint(0,len(escolha_1))
-    menu_2 = input('DIFICULDADE DO JOGO \n\n[1]FÁCIL(9 CHANCES)\n[2]MÉDIO(6 CHANCES)\n[3]DIFÍCIL(3 CHANCES)\n\nDigite o número do tipo escolhido: ')
-    while menu_2 not in ('1','2','3'):
-        menu_2 = input('DIFICULDADE DO JOGO \n\n[1]FÁCIL(9 CHANCES)\n[2]MÉDIO(6 CHANCES)\n[3]DIFÍCIL(3 CHANCES)\n\nDigite o número do tipo escolhido: ')
     
-    errors = 0    
+    while True:
+        print('\nDIFICULDADE DO JOGO\n')
+        print('[1] FÁCIL(9 CHANCES)')
+        print('[2] MÉDIO(6 CHANCES)') 
+        print('[3] DIFÍCIL(3 CHANCES)')
+        menu_2 = input('Digite o número da dificuldade escolhida: ')
+        if menu_2 not in ('1','2','3'):
+            print('Digite apenas um número de 1 a 3.\n')
+        else:
+            break
+
+    errors = 0
     while errors <= 9:
         drawDoll(errors)
         if errors < 9:
             resposta = '  ', '___  ' * index
             print(resposta)
-            entrada = input('Digite uma letra: ')            
+            entrada = input('Digite uma letra: ').lower()          
         if entrada not in (escolha_1[index]):
             if menu_2 == '3':
                 errors += 3        
@@ -119,8 +133,24 @@ while True:
                 # pensando ainda em uma forma de implementar 
                 # essa parte da dificuldade 2
             else:
-                errors += 1        
-            
+                errors += 1
+    
+    while True:
+        restart = input('\nDeseja jogar novamente [S/N]?').upper()
+        if restart not in ('S', 'N'):
+            print("Digite apenas 'S' ou 'N'.\n")
+        else:
+            break
+    if restart == 'N':
+        break
+        
+        
+        
+        
+        
+        
+        
+        
     
     # if entrada in (escolha_1[index]):
     #     print("  _______     ")
@@ -271,5 +301,6 @@ while True:
 
 
     #     escolha_2 = 3
+
 
 
