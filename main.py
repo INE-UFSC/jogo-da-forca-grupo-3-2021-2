@@ -117,15 +117,26 @@ while True:
             print('Digite apenas um número de 1 a 3.\n')
         else:
             break
-
+    
+    palavra = escolha_1[index]
     errors = 0
+    resposta = ["_"] * len(palavra)
     while errors <= 9:
         drawDoll(errors)
         if errors < 9:
-            resposta = '  ', '___  ' * index
-            print(resposta)
+            for i in range(len(resposta)):
+                if i != len(resposta) - 1:
+                    print(resposta[i], end=" ")
+                else:
+                    print(resposta[i])
+            
+            checkAcerto = list(palavra)
+            if checkAcerto == resposta:
+                print("ACERTOU!")
+                break
+
             entrada = input('Digite uma letra: ').lower()          
-        if entrada not in (escolha_1[index]):
+        if entrada not in palavra:
             if menu_2 == '3':
                 errors += 3        
             elif menu_2 == '2':
@@ -134,173 +145,20 @@ while True:
                 # essa parte da dificuldade 2
             else:
                 errors += 1
+        else:
+            temp = list(palavra)
+            for i in range(len(temp)):
+                if entrada == temp[i]:
+                    resposta[i] = entrada
     
     while True:
-        restart = input('\nDeseja jogar novamente [S/N]?').upper()
+        restart = input('\nDeseja jogar novamente [S/N]?\n').upper()
         if restart not in ('S', 'N'):
             print("Digite apenas 'S' ou 'N'.\n")
         else:
             break
     if restart == 'N':
         break
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    # if entrada in (escolha_1[index]):
-    #     print("  _______     ")
-    #     print(" |/      |    ")
-    #     print(" |            ")
-    #     print(" |            ")
-    #     print(" |            ")
-    #     print(" |            ")
-    #     resposta = '   ' + '___  ' * (index-1) + '  ' + escolha_1[index]
-    #     print(resposta)
-    # else:
-    #     errors += 1
-    #     drawDoll(errors)
-    #     print(resposta)
-    #         if :
-    #             print("  _______     ")
-    #             print(" |/      |    ")
-    #             print(" |      (_)   ")
-    #             print(" |      \|/   ")
-    #             print(" |            ")
-    #             print(" |            ")
-
-    #         if :
-    #                 print("  _______     ")
-    #                 print(" |/      |    ")
-    #                 print(" |      (_)   ")
-    #                 print(" |      \|/   ")
-    #                 print(" |       |    ")
-    #                 print(" |      / \   ")
-    #         escolha_2 = 9
-
-    # elif menu_2 == '2':
-    #     if:
-    #         print("  _______     ")
-    #         print(" |/      |    ")
-    #         print(" |      (_    ")
-    #         print(" |            ")
-    #         print(" |            ")
-    #         print(" |            ")
-    #         if:
-    #             print("  _______     ")
-    #             print(" |/      |    ")
-    #             print(" |      (_)   ")
-    #             print(" |       |    ")
-    #             print(" |            ")
-    #             print(" |            ")
-    #             if:
-    #                 print("  _______     ")
-    #                 print(" |/      |    ")
-    #                 print(" |      (_)   ")
-    #                 print(" |      \|/   ")
-    #                 print(" |            ")
-    #                 print(" |            ")
-    #                 if:
-    #                     print("  _______     ")
-    #                     print(" |/      |    ")
-    #                     print(" |      (_)   ")
-    #                     print(" |      \|/   ")
-    #                     print(" |       |    ")
-    #                     print(" |            ")
-    #                     if:
-    #                         print("  _______     ")
-    #                         print(" |/      |    ")
-    #                         print(" |      (_)   ")
-    #                         print(" |      \|/   ")
-    #                         print(" |       |    ")
-    #                         print(" |        \   ")
-    #                         if:
-    #                             print("  _______     ")
-    #                             print(" |/      |    ")
-    #                             print(" |      (_)   ")
-    #                             print(" |      \|/   ")
-    #                             print(" |       |    ")
-    #                             print(" |      / \   ")
-    #                             if:
-    #                                 if:
-    #                                     print("  _______     ")
-    #                                     print(" |/      |    ")
-    #                                     print(" |      (_)   ")
-    #                                     print(" |      \|/   ")
-    #                                     print(" |       |    ")
-    #                                     print(" |      / \   ")
-
-    #     escolha_2 = 6
-    # elif menu_2 == '1':
-    #     print("  _______     ")
-    #     print(" |/      |    ")
-    #     print(" |      (     ")
-    #     print(" |            ")
-    #     print(" |            ")
-    #     print(" |            ")
-    #     if erros == 2:
-    #         print("  _______     ")
-    #         print(" |/      |    ")
-    #         print(" |      (_    ")
-    #         print(" |            ")
-    #         print(" |            ")
-    #         print(" |            ")
-    #         if erros == 3 :
-    #             print("  _______     ")
-    #             print(" |/      |    ")
-    #             print(" |      (_)   ")
-    #             print(" |            ")
-    #             print(" |            ")
-    #             print(" |            ")
-    #             if erros == 4:
-    #                 print("  _______     ")
-    #                 print(" |/      |    ")
-    #                 print(" |      (_)   ")
-    #                 print(" |       |    ")
-    #                 print(" |            ")
-    #                 print(" |            ")
-    #                 if erros == 5:
-    #                     print("  _______     ")
-    #                     print(" |/      |    ")
-    #                     print(" |      (_)   ")
-    #                     print(" |      \|    ")
-    #                     print(" |            ")
-    #                     print(" |            ")
-    #                     if erros == 6:
-    #                         print("  _______     ")
-    #                         print(" |/      |    ")
-    #                         print(" |      (_)   ")
-    #                         print(" |      \|/   ")
-    #                         print(" |            ")
-    #                         print(" |            ")
-    #                         if erros == 7:
-    #                             print("  _______     ")
-    #                             print(" |/      |    ")
-    #                             print(" |      (_)   ")
-    #                             print(" |      \|/   ")
-    #                             print(" |       |    ")
-    #                             print(" |            ")
-    #                             if erros == 8:
-    #                                 print("  _______     ")
-    #                                 print(" |/      |    ")
-    #                                 print(" |      (_)   ")
-    #                                 print(" |      \|/   ")
-    #                                 print(" |       |    ")
-    #                                 print(" |      /     ")
-    #                                 if erros == 9:
-    #                                     print("  _______     ")
-    #                                     print(" |/      |    ")
-    #                                     print(" |      (_)   ")
-    #                                     print(" |      \|/   ")
-    #                                     print(" |       |    ")
-    #                                     print(" |      / \   ")
-
-
-    #     escolha_2 = 3
 
 
 
