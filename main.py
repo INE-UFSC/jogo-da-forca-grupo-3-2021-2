@@ -3,10 +3,13 @@ import time
 import os
 import math
 
-sentimentos = ['alegria', 'amor', 'cidadania', 'esperança','felicidade', 'harmonia',  'paz', 'perseverança', 'saudades','solidariedade',  'tristeza', 'odio', 'raiva']
-frutas = ['abacate', 'abacaxi', 'acerola', 'banana', 'caju''igo','framboesa', 'goiaba', 'kiwi', 'laranja', 'limão', 'maçã', 'mamão', 'melão', 'pêssego', 'tangerina', 'manga']
+sentimentos = ['alegria', 'amor', 'cidadania', 'esperança','felicidade', 'harmonia',  'paz', 'perseverança', 'saudades','solidariedade',  'tristeza', 'ódio', 'raiva']
+frutas = ['abacate', 'abacaxi', 'acerola', 'banana', 'caju','figo','framboesa', 'goiaba', 'kiwi', 'laranja', 'limão', 'maçã', 'mamão', 'melão', 'pêssego', 'tangerina', 'manga']
 times = ['atlético', 'botafogo', 'corinthians', 'coritiba', 'cruzeiro', 'flamengo','fluminense', 'goiás','grêmio','internacional', 'náutico', 'palmeiras',  'santos',  'vasco', 'avaí', 'figueirense']
 
+sentimentos_sa = ['alegria', 'amor', 'cidadania', 'esperança','felicidade', 'harmonia',  'paz', 'perseverança', 'saudades','solidariedade',  'tristeza', 'odio', 'raiva']
+frutas_sa = ['abacate', 'abacaxi', 'acerola', 'banana', 'caju','figo','framboesa', 'goiaba', 'kiwi', 'laranja', 'limao', 'maça', 'mamao', 'melao', 'pessego', 'tangerina', 'manga']
+times_sa = ['atletico', 'botafogo', 'corinthians', 'coritiba', 'cruzeiro', 'flamengo','fluminense', 'goias','grêmio','internacional', 'nautico', 'palmeiras',  'santos',  'vasco', 'avai', 'figueirense']
 
 # Desenha o boneco a cada erro
 # @params error
@@ -18,14 +21,14 @@ def drawDoll (error):
         print(" |            ")
         print(" |            ")
         print(" |            ")
-    if error == 1:
+    if error == 1 or error == 1.5:
         print("  _______     ")
         print(" |/      |    ")
         print(" |      (     ")
         print(" |            ")
         print(" |            ")
         print(" |            ")
-    if error == 2:
+    if error == 2 :
         print("  _______     ")
         print(" |/      |    ")
         print(" |      (_    ")
@@ -39,14 +42,14 @@ def drawDoll (error):
         print(" |            ")
         print(" |            ")
         print(" |            ")
-    if error == 4:
+    if error == 4 or error == 4.5:
         print("  _______     ")
         print(" |/      |    ")
         print(" |      (_)   ")
         print(" |       |    ")
         print(" |            ")
         print(" |            ")
-    if error == 5:
+    if error == 5 :
         print("  _______     ")
         print(" |/      |    ")
         print(" |      (_)   ")
@@ -60,7 +63,7 @@ def drawDoll (error):
         print(" |      \|/   ")
         print(" |            ")
         print(" |            ")
-    if error == 7:
+    if error == 7 or error == 7.5:
         print("  _______     ")
         print(" |/      |    ")
         print(" |      (_)   ")
@@ -83,8 +86,8 @@ def drawDoll (error):
         print(" |      / \   ")
         print("    ACABOU!   ")
         time.sleep(2)
-        clear = lambda: os.system('clear')
-        clear()
+        Clear = lambda: os.system('clear')
+        Clear()
 
 while True:       
     while True:
@@ -100,12 +103,15 @@ while True:
             break
 
     if menu_1 == '1':
-        escolha_1 = sentimentos[:]
+        escolha_1 = sentimentos_sa[:]
+        escolha_1_2 = sentimentos[:]
     elif menu_1 == '2':
-        escolha_1 = frutas[:]
+        escolha_1 = frutas_sa[:]
+        escolha_1_2 = frutas[:]
     elif menu_1 == '3':
-        escolha_1 = times[:]
-    index = random.randint(0,len(escolha_1))
+        escolha_1 = times_sa[:]
+        escolha_1_2 = times[:]
+    index = random.randint(0,len(escolha_1)-1)
     
     while True:
         print('\nDIFICULDADE DO JOGO\n')
@@ -119,6 +125,9 @@ while True:
             break
     
     palavra = escolha_1[index]
+    palavra_print = escolha_1_2[index]
+    #Funciona junto com o temp print
+    #Um é para conferência e outro para mostrar no console
     errors = 0
     resposta = ["_"] * len(palavra)
     while errors <= 9:
@@ -130,7 +139,7 @@ while True:
                 else:
                     print(resposta[i])
             
-            checkAcerto = list(palavra)
+            checkAcerto = list(palavra_print)
             if checkAcerto == resposta:
                 print("ACERTOU!")
                 break
@@ -140,16 +149,21 @@ while True:
             if menu_2 == '3':
                 errors += 3        
             elif menu_2 == '2':
-                errors += 2     
+                errors += 1.5
                 # pensando ainda em uma forma de implementar 
                 # essa parte da dificuldade 2
-            else:
+                # Kalleo -- Troquei o valor para 1.5 e modifiquei
+                # dando a opção de números quebrados na função
+            elif menu_2 == '1':
                 errors += 1
         else:
             temp = list(palavra)
+            temp_print = list(palavra_print)
+            #o temp é para conferência e o temp_print
+            #é enviado para a resposta para depois ser printado
             for i in range(len(temp)):
                 if entrada == temp[i]:
-                    resposta[i] = entrada
+                    resposta[i] = temp_print[i]
     
     while True:
         restart = input('\nDeseja jogar novamente [S/N]?\n').upper()
